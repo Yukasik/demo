@@ -15,10 +15,12 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    protected $guarded = [];
+    
     public function orders() {
         return $this -> hasMany(Order::class); // M
     }
-    
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 

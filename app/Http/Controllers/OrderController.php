@@ -32,7 +32,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * просмотр объекта
      */
     public function show(Order $order)
     {
@@ -48,7 +48,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * валидация
      */
     public function update(Request $request, Order $order)
     {

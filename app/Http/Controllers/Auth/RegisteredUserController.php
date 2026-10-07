@@ -34,8 +34,10 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'middlename' => ['required', 'string', 'max:255'],
+
             'tel' => ['required', 'string', 'max:255'],
-            'login' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'login' => ['required', 'string', 'min:6', 'max:255', 'unique:'.User::class],
+
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -49,6 +51,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+
+        // на мухоной быстрее
 
         event(new Registered($user));
 
